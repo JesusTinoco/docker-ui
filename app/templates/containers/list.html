@@ -1,0 +1,11 @@
+<div>
+    <legend>List of containers</legend>
+    {% for container in containers -%}
+    <div>
+        <p>
+            Container id: {{ container.Id }}}
+            Status: {{container.Status}}
+        </p>
+    </div>
+    {%- endfor %}
+</div>
