@@ -5,6 +5,7 @@
         <p>
             Container id: {{ container.Id }}}
             Status: {{container.Status}}
+            <a href="/containers/{{container.Id}}">More info</a>
         </p>
     </div>
     {%- endfor %}
