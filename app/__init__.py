@@ -9,5 +9,7 @@ def not_found(error):
     return render_template('404.html'), 404
 
 from app.containers.controllers import containers as containers_module
+from app.images.controllers import images as images_module
 
 app.register_blueprint(containers_module)
+app.register_blueprint(images_module)

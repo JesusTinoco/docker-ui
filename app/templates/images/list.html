@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div id="main-section-name">
+    <h1>Images</h1>
+  </div>
+  <div id="search" class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Search!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div>
+  <div id="images-list">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th><input type="checkbox" value=""></th>
+          <th>Repository</th>
+          <th>TAG</th>
+          <th>Image ID</th>
+          <th>Created</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      {% for image in images -%}
+      <tbody>
+        <tr>
+          <td><input type="checkbox" value=""></td>
+          <td>{{ image.RepoTags[0].split(':')[0] }}</td>
+          <td>{{ image.RepoTags[0].split(':')[1] }}</td>
+          <td>
+            <a href="/images/{{ image.Id.split(':')[1][:12] }}">
+              {{ image.Id.split(':')[1][:12] }}
+            </a>
+          </td>
+          <td>{{ image.Created }}</td>
+          <td>{{ image.Size }}</td>
+        </tr>
+      </tbody>
+    {%- endfor %}
+    </table>
+  </div>
+{% endblock %}

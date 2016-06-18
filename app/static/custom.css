@@ -4,6 +4,10 @@
   margin-top: 35px;
 }
 
+#main-section-name {
+  padding: 15px;
+}
+
 /* containers section */
 
 #containers-list {
@@ -11,6 +15,9 @@
   padding-top: 50px;
 }
 
-#main-section-name {
+/* images section */
+
+#images-list {
   padding: 15px;
+  padding-top: 50px;
 }
