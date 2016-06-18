@@ -1,0 +1,28 @@
+<!doctype html>
+<title>Docker UI</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='custom.css') }}">
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">docker-ui</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/containers/list">containers</a></li>
+        <li><a href="#images">images</a></li>
+        <li><a href="#volumes">volumes</a></li>
+        <li><a href="#networks">networks</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="main-section" class=container>
+  {% block body %}{% endblock %}
+</div>

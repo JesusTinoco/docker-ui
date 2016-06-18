@@ -1,12 +1,46 @@
-<div>
-    <legend>List of containers</legend>
-    {% for container in containers -%}
-    <div>
-        <p>
-            Container id: {{ container.Id }}}
-            Status: {{container.Status}}
-            <a href="/containers/{{container.Id}}">More info</a>
-        </p>
-    </div>
+{% extends "layout.html" %}
+{% block body %}
+  <div id="main-section-name">
+    <h1>Containers</h1>
+  </div>
+  <div id="search" class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Search!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div>
+  <div id="containers-list">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th><input type="checkbox" value=""></th>
+          <th>Container ID</th>
+          <th>Image</th>
+          <th>Command</th>
+          <th>Created</th>
+          <th>Status</th>
+          <th>Ports</th>
+          <th>Names</th>
+        </tr>
+      </thead>
+      {% for container in containers -%}
+      <tbody>
+        <tr>
+          <td><input type="checkbox" value=""></td>
+          <td>
+            <a href="/containers/{{container.Id[:12]}}">{{ container.Id[:12] }}</a>
+          </td>
+          <td>{{ container.Image }}</td>
+          <td>{{ container.Command[1:] }}</td>
+          <td>{{ container.Created }}</td>
+          <td>{{ container.Status }}</td>
+          <td>{{ container.Ports }}</td>
+          <td>{{ container.Names[0][1:] }}</td>
+        </tr>
+      </tbody>
     {%- endfor %}
-</div>
+    </table>
+  </div>
+{% endblock %}

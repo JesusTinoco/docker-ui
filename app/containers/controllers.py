@@ -10,7 +10,7 @@ def list():
     containerList = cli.containers(all=True)
     return render_template('containers/list.html', containers=containerList)
 
-@containers.route('/<string:container_id>')
+@containers.route('/<string:container_id>', methods=['GET'])
 def container_info(container_id):
     print(container_id)
     container = cli.inspect_container(container_id)
