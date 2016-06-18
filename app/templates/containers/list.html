@@ -30,14 +30,14 @@
         <tr>
           <td><input type="checkbox" value=""></td>
           <td>
-            <a href="/containers/{{container.Id[:12]}}">{{ container.Id[:12] }}</a>
+            <a href="/containers/{{ container.short_id() }}">{{ container.short_id() }}</a>
           </td>
-          <td>{{ container.Image }}</td>
-          <td>{{ container.Command[1:] }}</td>
-          <td>{{ container.Created }}</td>
-          <td>{{ container.Status }}</td>
-          <td>{{ container.Ports }}</td>
-          <td>{{ container.Names[0][1:] }}</td>
+          <td>{{ container.image() }}</td>
+          <td>{{ container.command() }}</td>
+          <td>{{ container.created() }}</td>
+          <td>{{ container.status() }}</td>
+          <td>{{ container.ports() }}</td>
+          <td>{{ container.name() }}</td>
         </tr>
       </tbody>
     {%- endfor %}
