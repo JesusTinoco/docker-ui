@@ -58,10 +58,14 @@
                 </li>
                 {% else %}
                 <li>
-                  <a href="#">Stop</a>
+                  <form action="{{ url_for('containers.stop_container', container_id=container.short_id()) }}" method="post">
+                    <button class="btn btn-link" type="submit">Stop</button>
+                  </form>
                 </li>
                 <li>
-                  <a href="#">Restart</a>
+                  <form action="{{ url_for('containers.restart_container', container_id=container.short_id()) }}" method="post">
+                    <button class="btn btn-link" type="submit">Restart</button>
+                  </form>
                 </li>
                 {% endif %}
               </ul>

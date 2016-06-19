@@ -17,20 +17,38 @@ def container_info(container_id):
     container = cli.inspect_container(container_id)
     return render_template('containers/info.html', container = container)
 
-@containers.route('/<string:container_id>/delete', methods=['POST'])
-def remove_container(container_id):
-    # TODO: Add flash message throwing an error if the remove method fails
+@containers.route('/<string:container_id>/start', methods=['POST'])
+def start_container(container_id):
+    # TODO: Add flash message throwing an error if the start method fails
     try:
-        cli.remove_container(str(container_id))
+        cli.start(container_id)
     except Error:
         print "Oops!"
     return redirect(url_for('containers.list'))
 
-@containers.route('/<string:container_id>/start', methods=['POST'])
-def start_container(container_id):
+@containers.route('/<string:container_id>/restart', methods=['POST'])
+def restart_container(container_id):
+    # TODO: Add flash message throwing an error if the restart method fails
+    try:
+        cli.restart(container_id)
+    except Error:
+        print "Oops!"
+    return redirect(url_for('containers.list'))
+
+@containers.route('/<string:container_id>/stop', methods=['POST'])
+def stop_container(container_id):
+    # TODO: Add flash message throwing an error if the stop method fails
+    try:
+        cli.stop(container_id)
+    except Error:
+        print "Oops!"
+    return redirect(url_for('containers.list'))
+
+@containers.route('/<string:container_id>/delete', methods=['POST'])
+def remove_container(container_id):
     # TODO: Add flash message throwing an error if the remove method fails
     try:
-        cli.start(str(container_id))
+        cli.remove_container(container_id)
     except Error:
         print "Oops!"
     return redirect(url_for('containers.list'))
