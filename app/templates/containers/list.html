@@ -4,12 +4,14 @@
     <h1>Containers</h1>
   </div>
   <div id="search" class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for...">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Search!</button>
-      </span>
-    </div><!-- /input-group -->
+    <form method="get" role="form">
+      <div class="input-group">
+        <input class="form-control input-xs" name="q" placeholder="Search..." value="{{ request.args.get('q', '') }}" />
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Search!</button>
+          </span>
+      </div>
+    </form>
   </div>
   <div id="containers-list">
     <table class="table table-bordered">

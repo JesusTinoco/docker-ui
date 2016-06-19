@@ -8,8 +8,8 @@ containers = Blueprint('containers', __name__, url_prefix='/containers')
 
 @containers.route('/list/', methods=['GET'])
 def list():
-    containerList = [Container(container) for container in cli.containers(all=True)]
-    return render_template('containers/list.html', containers=containerList)
+    containers = [Container(container) for container in cli.containers(all=True)]
+    return containers_list('containers/list.html', containers)
 
 @containers.route('/<string:container_id>', methods=['GET'])
 def container_info(container_id):
@@ -34,3 +34,16 @@ def start_container(container_id):
     except Error:
         print "Oops!"
     return redirect(url_for('containers.list'))
+
+
+def containers_list(template, containers_list):
+    search = request.args.get('q')
+    containers_filtered = containers_list
+    if search:
+        containers_filtered = []
+        for container in containers_list:
+            if (search in container.name()
+                or search in container.image()
+                or search in container.id()):
+                containers_filtered.append(container)
+    return render_template('containers/list.html', containers=containers_filtered)
