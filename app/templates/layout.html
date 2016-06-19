@@ -1,7 +1,11 @@
 <!doctype html>
 <title>Docker UI</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='custom.css') }}">
+<head>
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery-3.0.0.min.js') }}" ></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='dropdown.js') }}" ></script>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='custom.css') }}">
+</head>
 <nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <div class="navbar-header">

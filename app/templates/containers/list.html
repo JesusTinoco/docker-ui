@@ -15,7 +15,6 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th><input type="checkbox" value=""></th>
           <th>Container ID</th>
           <th>Image</th>
           <th>Command</th>
@@ -23,12 +22,12 @@
           <th>Status</th>
           <th>Ports</th>
           <th>Names</th>
+          <th>Actions</th>
         </tr>
       </thead>
       {% for container in containers -%}
       <tbody>
         <tr>
-          <td><input type="checkbox" value=""></td>
           <td>
             <a href="/containers/{{ container.short_id() }}">{{ container.short_id() }}</a>
           </td>
@@ -38,6 +37,34 @@
           <td>{{ container.status() }}</td>
           <td>{{ container.ports() }}</td>
           <td>{{ container.name() }}</td>
+          <td id=containers-action>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Primary <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                {% if container.state() == 'exited' %}
+                <li>
+                  <form action="{{ url_for('containers.start_container', container_id=container.short_id()) }}" method="post">
+                    <button class="btn btn-link" type="submit">Start</button>
+                  </form>
+                </li>
+                <li>
+                  <form action="{{ url_for('containers.remove_container', container_id=container.short_id()) }}" method="post">
+                    <button class="btn btn-link" type="submit">Delete</button>
+                  </form>
+                </li>
+                {% else %}
+                <li>
+                  <a href="#">Stop</a>
+                </li>
+                <li>
+                  <a href="#">Restart</a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </td>
         </tr>
       </tbody>
     {%- endfor %}

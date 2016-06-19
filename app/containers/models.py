@@ -25,6 +25,9 @@ class Container(object):
     def status(self):
         return self.dictionary["Status"]
 
+    def state(self):
+        return self.dictionary["State"]
+
     def ports(self):
         return self.dictionary["Ports"]
 
