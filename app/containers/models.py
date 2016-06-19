@@ -20,7 +20,7 @@ class Container(object):
         return self.dictionary["Image"]
 
     def command(self):
-        return self.dictionary["Command"][1:]
+        return self.dictionary["Command"]
 
     def status(self):
         return self.dictionary["Status"]
