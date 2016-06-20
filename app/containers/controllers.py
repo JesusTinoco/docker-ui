@@ -64,4 +64,4 @@ def containers_list(template, containers_list):
                 or search in container.image()
                 or search in container.id()):
                 containers_filtered.append(container)
-    return render_template('containers/list.html', containers=containers_filtered)
+    return render_template(template, containers=containers_filtered)
