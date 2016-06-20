@@ -3,6 +3,14 @@
   <div id="main-section-name">
     <h1>Images</h1>
   </div>
+  <div id="flash-message">
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <div class="alert alert-dismissable alert-{{ category }}">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+      </div>
+  {% endfor %}
+  </div>
   <div id="search" class="col-lg-6">
     <form method="get" role="form">
       <div class="input-group">
@@ -17,18 +25,17 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th><input type="checkbox" value=""></th>
           <th>Repository</th>
           <th>TAG</th>
           <th>Image ID</th>
           <th>Created</th>
           <th>Size</th>
+          <th>Action</th>
         </tr>
       </thead>
       {% for image in images -%}
       <tbody>
         <tr>
-          <td><input type="checkbox" value=""></td>
           <td>{{ image.RepoTags[0].split(':')[0] }}</td>
           <td>{{ image.RepoTags[0].split(':')[1] }}</td>
           <td>
@@ -38,6 +45,11 @@
           </td>
           <td>{{ image.Created }}</td>
           <td>{{ image.Size }}</td>
+          <td id=actions-cell>
+            <form action="{{ url_for('images.delete_image', image_id=image.Id.split(':')[1][:12]) }}" method="post">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
         </tr>
       </tbody>
     {%- endfor %}

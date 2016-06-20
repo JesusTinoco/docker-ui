@@ -8,15 +8,20 @@
   padding: 15px;
 }
 
+#actions-cell {
+  text-align: center;
+}
+
+#flash-message {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
 /* containers section */
 
 #containers-list {
   padding: 15px;
   padding-top: 50px;
-}
-
-#containers-action {
-  text-align: center;
 }
 
 /* images section */
