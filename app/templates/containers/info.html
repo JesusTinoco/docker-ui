@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div id=container-info-panel>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ container.name() }} - {{ container.human_readable_duration() }}</h3>
+    </div>
+    <div class="panel-body">
+    Panel content
+    </div>
+    {% if processes %}
+      <div id=container-processes-tab>
+        <div class="panel panel-default">
+          <div class="panel-heading">Processes</div>
+            <table class="table">
+              <thead>
+                <tr>
+                  {% for title in processes["Titles"] -%}
+                    <th>{{ title }}</th>
+                  {%- endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for process in processes["Processes"] -%}
+                  <tr>
+                    {% for field in process -%}
+                      <td>{{ field }}</td>
+                    {%- endfor %}
+                  </tr>
+                {%- endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

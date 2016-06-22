@@ -24,6 +24,17 @@
   padding-top: 50px;
 }
 
+/* container info */
+
+#container-info-panel {
+  margin-top: 35px;
+}
+
+#container-processes-tab {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
 /* images section */
 
 #images-list {

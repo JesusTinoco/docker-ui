@@ -38,6 +38,37 @@ class Container(object):
         return self.dictionary["Created"]
 
     # TODO: Have to check this method
+
+
+class ContainerInspect(object):
+
+    def __init__(self, dictionary):
+        self.dictionary = dictionary
+
+    def id(self):
+        return self.dictionary["Id"]
+
+    def short_id(self):
+        return self.dictionary["Id"][:12]
+
+    def name(self):
+        return self.dictionary["Name"][1:]
+
+    def image(self):
+        return self.dictionary["Config"]["Image"]
+
+    def ports(self):
+        return self.dictionary["NetworkSettings"]["Ports"]
+
+    def status(self):
+        return self.dictionary["State"]["Status"]
+
+    def command(self):
+        return self.dictionary["Config"]["Cmd"]
+
+    def created(self):
+        return self.dictionary["Created"]
+
     def human_readable_duration(self):
         parsedDate = list(map(int, re.findall(r"[\d]+", str(self.dictionary["Created"]))))
         date = datetime(parsedDate[0],

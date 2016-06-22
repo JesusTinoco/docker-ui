@@ -1,6 +1,6 @@
 from flask import Blueprint, flash, request, render_template, redirect, url_for
 from docker import Client
-from models import Container
+from models import Container, ContainerInspect
 
 cli = Client(base_url='unix://var/run/docker.sock')
 
@@ -13,9 +13,13 @@ def list():
 
 @containers.route('/<string:container_id>', methods=['GET'])
 def container_info(container_id):
-    print(container_id)
-    container = cli.inspect_container(container_id)
-    return render_template('containers/info.html', container = container)
+    container = ContainerInspect(cli.inspect_container(container_id))
+    processes = []
+    try:
+        processes = cli.top(container_id)
+    except Exception as err:
+        print err
+    return render_template('containers/info.html', container = container, processes=processes)
 
 @containers.route('/<string:container_id>/start', methods=['POST'])
 def start_container(container_id):
