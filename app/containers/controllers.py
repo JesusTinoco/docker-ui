@@ -15,6 +15,7 @@ def list():
 def container_info(container_id):
     container = ContainerInspect(cli.inspect_container(container_id))
     processes = []
+    print container.links()
     try:
         processes = cli.top(container_id)
     except Exception as err:

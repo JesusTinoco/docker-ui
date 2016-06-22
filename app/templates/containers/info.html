@@ -9,6 +9,29 @@
     <div class="panel-body">
     Panel content
     </div>
+    {% if container.links() %}
+      <div id=container-links-tab>
+        <div class="panel panel-default">
+          <div class="panel-heading">Links</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Container name</th>
+                <th>Link name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for link in container.links() -%}
+              <tr>
+                <td>{{ link["container_name"] }}</td>
+                <td>{{ link["link_name"] }}</td>
+              </tr>
+              {%- endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {% endif %}
     {% if processes %}
       <div id=container-processes-tab>
         <div class="panel panel-default">

@@ -60,6 +60,20 @@ class ContainerInspect(object):
     def ports(self):
         return self.dictionary["NetworkSettings"]["Ports"]
 
+    def networks(self):
+        return self.dictionary["NetworkSettings"]["Networks"]
+
+    def links(self):
+        networks = self.networks()
+        links = networks[networks.keys()[0]]["Links"]
+        result = None;
+        if links:
+            result = []
+            for link in links:
+                names = link.split(':')
+                result.append(dict(container_name=names[0], link_name=names[1]))
+        return result
+
     def status(self):
         return self.dictionary["State"]["Status"]
 
