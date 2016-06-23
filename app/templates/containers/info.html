@@ -7,7 +7,36 @@
       <h3 class="panel-title">{{ container.name() }} - {{ container.human_readable_duration() }}</h3>
     </div>
     <div class="panel-body">
-    Panel content
+      <div id=container-actions>
+        <button type="button" class="btn btn-default">
+           <span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Stats
+        </button>
+        <button type="button" class="btn btn-success">
+           <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start
+        </button>
+        <button type="button" class="btn btn-success">
+           <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Restart
+        </button>
+        <button type="button" class="btn btn-warning">
+           <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
+         </button>
+        <button type="button" class="btn btn-danger">
+           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
+         </button>
+        <button type="button" class="btn btn-primary">
+           <span class="glyphicon glyphicon-console" aria-hidden="true"></span> Console
+         </button>
+        <button type="button" class="btn btn-info">
+           <span class="glyphicon glyphicon-file" aria-hidden="true"></span> Logs
+         </button>
+      </div>
+
+      <div id=container-configuration-tab>
+        <div class="panel panel-default">
+          <div class="panel-heading">Configuration</div>
+        </div>
+      </div>
+
     </div>
     {% if container.links() %}
       <div id=container-links-tab>
