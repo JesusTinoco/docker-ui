@@ -74,6 +74,9 @@ class ContainerInspect(object):
                 result.append(dict(container_name=names[0], link_name=names[1]))
         return result
 
+    def mounts(self):
+        return self.dictionary["Mounts"]
+
     def status(self):
         return self.dictionary["State"]["Status"]
 

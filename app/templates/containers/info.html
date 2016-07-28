@@ -31,13 +31,47 @@
          </button>
       </div>
 
+
       <div id=container-configuration-tab>
         <div class="panel panel-default">
           <div class="panel-heading">Configuration</div>
+          <table class="table table-bordered">
+          </table>
         </div>
       </div>
 
     </div>
+
+    {% if container.mounts() %}
+      <div id=container-volumes-tab>
+        <div class="panel panel-default">
+          <div class="panel-heading">Volumes</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>RW</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Mode</th>
+                <th>Propagation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for volume in container.mounts() -%}
+              <tr>
+                <td>{{ volume["RW"] }}</td>
+                <td>{{ volume["Source"] }}</td>
+                <td>{{ volume["Destination"] }}</td>
+                <td>{{ volume["Mode"] }}</td>
+                <td>{{ volume["Propagation"] }}</td>
+              </tr>
+              {%- endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {% endif %}
+
     {% if container.links() %}
       <div id=container-links-tab>
         <div class="panel panel-default">
