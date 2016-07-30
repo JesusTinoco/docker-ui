@@ -36,6 +36,42 @@
         <div class="panel panel-default">
           <div class="panel-heading">Configuration</div>
           <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Container ID</th>
+                <th>Command</th>
+              </tr>
+              <tr>
+                <td>{{ container.short_id() }}</td>
+                <td>{{ container.command()  }}</td>
+              </tr>
+              <tr>
+                <th>Hostname</th>
+                <th>Domain name</th>
+              </tr>
+              <tr>
+                <td>{{ container.hostname() }}</td>
+                <td>{{ container.domain_name() }}</td>
+              </tr>
+              <tr>
+                <th>Workdir</th>
+                <th>User</th>
+              </tr>
+              <tr>
+                <td>{{ container.working_dir() }}</td>
+                <td>{{ container.user() }}</td>
+              </tr>
+              <tr>
+                <th colspan="2">Environment Variables</th>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  {% for env in container.env() -%}
+                    {{ env }}
+                  {% endfor %}
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

@@ -51,11 +51,29 @@ class ContainerInspect(object):
     def short_id(self):
         return self.dictionary["Id"][:12]
 
+    def config(self):
+        return self.dictionary["Config"]
+
     def name(self):
         return self.dictionary["Name"][1:]
 
+    def hostname(self):
+        return self.dictionary["Config"]["Hostname"]
+
+    def domain_name(self):
+        return self.dictionary["Config"]["Domainname"]
+
+    def working_dir(self):
+        return self.dictionary["Config"]["WorkingDir"]
+
+    def env(self):
+        return self.dictionary["Config"]["Env"]
+
+    def user(self):
+        return self.dictionary["Config"]["User"]
+
     def image(self):
-        return self.dictionary["Config"]["Image"]
+        return self.config()["Image"]
 
     def ports(self):
         return self.dictionary["NetworkSettings"]["Ports"]
