@@ -32,6 +32,11 @@
 
 #container-actions {
   float: right;
+  display: flex;
+}
+
+.button-container-action {
+  margin: 0px 0px 0px 5px;
 }
 
 #container-configuration-tab {

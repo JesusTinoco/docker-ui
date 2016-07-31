@@ -11,22 +11,35 @@
         <button type="button" class="btn btn-default">
            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Stats
         </button>
-        <button type="button" class="btn btn-success">
-           <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start
-        </button>
-        <button type="button" class="btn btn-success">
-           <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Restart
-        </button>
-        <button type="button" class="btn btn-warning">
-           <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
-         </button>
-        <button type="button" class="btn btn-danger">
-           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
-         </button>
-        <button type="button" class="btn btn-primary">
+        {% if container.status() == 'exited' %}
+        <form action="{{ url_for('containers.start_container', container_id=container.short_id()) }}" method="post">
+          <button type="submit" class="btn btn-success button-container-action">
+            <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start
+          </button>
+        </form>
+        <form action="{{ url_for('containers.remove_container', container_id=container.short_id()) }}" method="post">
+          <button type="submit" class="btn btn-danger button-container-action">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
+          </button>
+        </form>
+        {% else %}
+        <form action="{{ url_for('containers.restart_container', container_id=container.short_id()) }}" method="post">
+          <button type="submit" class="btn btn-success button-container-action">
+            <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Restart
+          </button>
+        </form>
+        <form action="{{ url_for('containers.stop_container', container_id=container.short_id()) }}" method="post">
+          <button type="submit" class="btn btn-warning button-container-action">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
+          </button>
+        </form>
+        {% endif %}
+        {% if container.tty() %}
+        <button type="button" class="btn btn-primary button-container-action">
            <span class="glyphicon glyphicon-console" aria-hidden="true"></span> Console
-         </button>
-        <button type="button" class="btn btn-info">
+        </button>
+        {% endif %}
+        <button type="button" class="btn btn-info button-container-action">
            <span class="glyphicon glyphicon-file" aria-hidden="true"></span> Logs
          </button>
       </div>

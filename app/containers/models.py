@@ -72,6 +72,9 @@ class ContainerInspect(object):
     def user(self):
         return self.dictionary["Config"]["User"]
 
+    def tty(self):
+        return self.dictionary["Config"]["Tty"]
+
     def image(self):
         return self.config()["Image"]
 
