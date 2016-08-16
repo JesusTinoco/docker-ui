@@ -5,7 +5,10 @@ RUN python get-pip.py
 
 WORKDIR /docker-ui
 
-#RUN . ./env/bin/activate && pip install -r requirement.txt
-#CMD ["python", "run.py"]
-
+CMD wrapdocker & \
+    pip install virtualenv && \
+    virtualenv env && \
+    . ./env/bin/activate && \
+    pip install -r requirement.txt && \
+    python run.py
 
