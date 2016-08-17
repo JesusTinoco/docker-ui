@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div id="main-section-name">
+    <h1>Networks</h1>
+  </div>
+  <div id="flash-message">
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <div class="alert alert-dismissable alert-{{ category }}">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+  <div id="search" class="col-lg-6">
+    <form method="get" role="form">
+      <div class="input-group">
+        <input class="form-control input-xs" name="q" placeholder="Search..." value="{{ request.args.get('q', '') }}" />
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit">Search!</button>
+        </span>
+      </div>
+    </form>
+  </div>
+  <div id="networks-list">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Driver</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for network in networks -%}
+          <tr>
+            <td>{{ network.id() }}</td>
+            <td>{{ network.driver() }}</td>
+            <td>{{ network.name() }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
