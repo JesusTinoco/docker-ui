@@ -37,6 +37,10 @@
             <td>{{ network.id() }}</td>
             <td>{{ network.driver() }}</td>
             <td>{{ network.name() }}</td>
+            <td>
+              <form action="{{ url_for('networks.remove_network', network_id=network.id()) }}" method="post">
+                <button class="btn btn-danger" type="submit">Delete</button>
+              </form></td>
           </tr>
         {% endfor %}
       </tbody>
