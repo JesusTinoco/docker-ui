@@ -14,3 +14,6 @@ class Network(object):
 
     def driver(self):
         return self.dictionary["Driver"]
+
+    def scope(self):
+        return self.dictionary["Scope"]
