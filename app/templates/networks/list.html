@@ -25,9 +25,7 @@
             <td>{{ network.scope() }}</td>
             <td>
               <form action="{{ url_for('networks.remove_network', network_id=network.id()) }}" method="post">
-                <button type="submit" class="btn btn-danger button-container-action">
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove
-                </button>
+                <button class="btn btn-danger" type="submit">Delete</button>
               </form>
             </td>
           </tr>
