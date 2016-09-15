@@ -29,4 +29,4 @@ def images_list(template, images_list):
             print image
             if search in str(image["RepoTags"][0].split(':')[0]):
                 images_filtered.append(image)
-    return render_template(template, images=images_filtered)
+    return render_template(template, images=images_filtered, image_active="active")

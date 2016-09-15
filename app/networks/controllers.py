@@ -30,4 +30,4 @@ def networks_list(template, network_list):
             if (search in network.name()
                 or search in network.id()):
                 networks_filtered.append(network)
-    return render_template(template, networks=networks_filtered)
+    return render_template(template, networks=networks_filtered, network_active="active")

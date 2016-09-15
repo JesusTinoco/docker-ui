@@ -30,4 +30,4 @@ def volumes_list(template, volume_list):
         for volume in volume_list:
             if search in volume.name():
                 volumes_filtered.append(volume)
-    return render_template(template, volumes=volumes_filtered)
+    return render_template(template, volumes=volumes_filtered, volume_active="active")
