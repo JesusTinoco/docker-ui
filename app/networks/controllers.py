@@ -8,10 +8,8 @@ networks = Blueprint('networks', __name__, url_prefix='/networks')
 
 @networks.route('/list', methods=['GET'])
 def list():
-    networks_aux = cli.networks()
-    networks = [] if networks_aux is None else [Network(network) for network in networks_aux]
+    networks = [Network(network) for network in cli.networks()]
     return networks_list('networks/list.html', networks)
-
 
 @networks.route('/<string:network_id>/delete', methods=['POST'])
 def remove_network(network_id):
