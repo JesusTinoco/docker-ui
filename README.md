@@ -1,6 +1,6 @@
 # Docker UI
  
- > Definition
+ > Docker UI is a web interface that allows you to interact with the [Docker API client in Python](https://github.com/docker/docker-py).
  
  # Prerequisites
  
