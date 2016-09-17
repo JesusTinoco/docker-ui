@@ -23,7 +23,7 @@
             <td>{{ network.driver() }}</td>
             <td>{{ network.name() }}</td>
             <td>{{ network.scope() }}</td>
-            <td>
+            <td id=actions-cell>
               <form action="{{ url_for('networks.remove_network', network_id=network.id()) }}" method="post">
                 <button class="btn btn-danger" type="submit">Delete</button>
               </form>

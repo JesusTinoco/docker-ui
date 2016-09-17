@@ -9,3 +9,5 @@ CSRF_ENABLED = True
 CSRF_SSESION_KEY = "secret"
 
 SECRET_KEY = "secret"
+
+WTF_CSRF_ENABLED = True

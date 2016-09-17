@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% from 'common/common.html' import flash, main_section_name, form_errors %}
+
+{% block body %}
+  {{ main_section_name("Build Image") }}
+  {{ flash(category, message) }}
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form action="" method="POST" name="build">
+        <div class="form-group">
+          {{ form.hidden_tag() }}
+        </div> 
+        <div class="form-group">
+          <label for="dockerfile">Dockerfile content (Required):</label>
+          {{ form.dockerfile(class="form-control", id="exampleTextarea", rows="8") }}
+        </div>
+        <div class="form-group">
+          <label for="tag">Tag (Required):</label>
+          {{ form.tag(class="form-control") }}
+        </div>
+        <div class="form-group">
+          <label for="nocache">Remove intermediate containers (Optional):</label>
+          {{ form.nocache(class="form-control") }}
+        </div>
+        <div class="form-group">
+          <label for="nocache">Do not use cache (Optional):</label>
+          {{ form.nocache(class="form-control") }}
+        </div>
+        <div class="form-group">
+          <label for="update">Downloads any update to the FROM image in Dockerfile (Optional):</label>
+          {{ form.update(class="form-control") }}
+        </div>
+        <p><input class="btn btn-default" type="submit" value="Build"></p>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

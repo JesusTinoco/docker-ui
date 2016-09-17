@@ -76,3 +76,8 @@
   padding: 15px;
   padding-top: 50px;
 }
+
+#build-image-btn {
+  float: right;
+  margin-right: 15px;
+}
