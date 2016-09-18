@@ -1,8 +1,11 @@
 from flask import Flask, render_template
+from docker import Client
 
 app = Flask(__name__)
 
 app.config.from_object('config')
+
+cli = Client(base_url='unix://var/run/docker.sock')
 
 @app.errorhandler(404)
 def not_found(error):

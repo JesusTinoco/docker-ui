@@ -1,8 +1,6 @@
 from flask import Blueprint, flash, request, render_template, redirect, url_for
-from docker import Client
+from .. import cli
 from models import Volume
-
-cli = Client(base_url='unix://var/run/docker.sock')
 
 volumes = Blueprint('volumes', __name__, url_prefix='/volumes')
 

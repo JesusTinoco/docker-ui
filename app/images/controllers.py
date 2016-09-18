@@ -1,9 +1,7 @@
 from flask import Blueprint, flash, request, render_template, redirect, url_for
 from .forms import BuildImageForm
-from docker import Client
+from .. import cli
 from io import BytesIO
-
-cli = Client(base_url='unix://var/run/docker.sock')
 
 images = Blueprint('images', __name__, url_prefix='/images')
 
