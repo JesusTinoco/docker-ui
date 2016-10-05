@@ -2,7 +2,7 @@
  
  > Docker UI is a web interface that allows you to interact with the [Docker API client in Python](https://github.com/docker/docker-py).
  
- # Prerequisites
+## Prerequisites
  
  To run this application you need to install Docker on your computer. You can find a guide that explains how to install it in the link below:
 
@@ -10,15 +10,15 @@
  
  Also, this image uses Docker-in-Docker as base image, so your Docker version should support the `--privileged` flag.
  
- # Quickstart
+## Quickstart
  
- ## Build the image
+### Build the image
  
  ```
  $ docker build -t dockerui .
  ```
  
- ## Run the image
+### Run the image
  
 * Run dockerui and get a shell where you can play. Also, it maps your port 8080 with the container internal port.
  
