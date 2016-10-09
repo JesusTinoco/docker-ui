@@ -1,11 +1,27 @@
 from flask import Flask, render_template
-from docker import Client
+import docker
+import platform
+import sys
 
 app = Flask(__name__)
 
 app.config.from_object('config')
 
-cli = Client(base_url='unix://var/run/docker.sock')
+cli = docker.Client(base_url='unix://var/run/docker.sock')
+system = platform.system()
+tcp_url = ''
+
+for parameter in sys.argv:
+    print(parameter)
+    if "host" in parameter:
+        tcp_url = parameter.split('=')[1]
+
+if system == 'Darwin' or system == 'Windows':
+    cli = docker.from_env(assert_hostname=False)
+
+if tcp_url != '':
+    cli = docker.Client(base_url=tcp_url)
+
 
 @app.errorhandler(404)
 def not_found(error):
