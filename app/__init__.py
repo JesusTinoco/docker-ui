@@ -12,7 +12,6 @@ system = platform.system()
 tcp_url = ''
 
 for parameter in sys.argv:
-    print(parameter)
     if "host" in parameter:
         tcp_url = parameter.split('=')[1]
 

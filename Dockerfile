@@ -9,4 +9,4 @@ RUN apk add --update \
 
 WORKDIR /docker-ui
 
-ENTRYPOINT python run.py
+ENTRYPOINT ["python", "run.py"]
