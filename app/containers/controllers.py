@@ -1,17 +1,11 @@
 from flask import Blueprint, flash, request, render_template, redirect, url_for
 from .. import cli
-from .. import tcp_url
 from models import Container, ContainerInspect
 
 containers = Blueprint('containers', __name__, url_prefix='/containers')
 
-print('rwetdfasdfasdfss')
-
 @containers.route('/list/', methods=['GET'])
 def list():
-    print "================================="
-    print tcp_url
-    print "================================="
     containers = [Container(container) for container in cli.containers(all=True)]
     return containers_list('containers/list.html', containers)
 
